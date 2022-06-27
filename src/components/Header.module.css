@@ -1,0 +1,34 @@
+.header {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+
+  gap: 0.875rem;
+  background: var(--gray-700);
+
+  padding: 4.5rem 0 5rem 0;
+}
+
+.header img {
+  height: 3rem;
+}
+
+.title span {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 3rem;
+
+}
+
+.title span:first-child {
+  color: var(--blue);
+}
+
+.title span:first-child::after {
+  content: "-"
+
+}
+
+.title span:last-child {
+  color: var(--purple);
+}
