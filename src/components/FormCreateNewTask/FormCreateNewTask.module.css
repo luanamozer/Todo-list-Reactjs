@@ -42,3 +42,53 @@
 
   cursor: pointer;
 }
+
+.btnCreate:not(:disabled):hover {
+  background: var(--blue-dark);
+}
+
+.btnCreate:disabled {
+  background: var(--blue-dark);
+  opacity: 0.9;
+  cursor: not-allowed;
+}
+
+.container {
+  max-width: 46rem;
+  margin: 4rem auto;
+
+
+}
+
+.taskRecord {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.taskRecord span {
+  height: 19px;
+  background: var(--gray-400);
+  color: var(--gray-100);
+  border-radius: 99px;
+  padding: 0.125rem 0.5rem;
+}
+
+.createdTask {
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: var(--blue);
+
+}
+
+.tasksCompleted {
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1rem;
+
+  color: var(--purple);
+}
