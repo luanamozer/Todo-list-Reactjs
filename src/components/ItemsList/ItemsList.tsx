@@ -1,32 +1,48 @@
-import { Circle, ClipboardText, Trash } from "phosphor-react";
-import { FormCreateNewTask } from "../FormCreateNewTask/FormCreateNewTask";
+import { Check, Trash } from "phosphor-react";
+import { TasksProps } from "../../App";
 
 import styles from "./ItemsList.module.css";
 
-export function ItemsList({ content, onDeleteTask }) {
+interface ItemListProps {
+  contentTask: TasksProps;
+  onDeleteTask: (taskToDelete: string) => void;
+  onTaskCompleted: (taskId: string) => void;
+}
+
+export function ItemsList({
+  contentTask,
+  onDeleteTask,
+  onTaskCompleted,
+}: ItemListProps) {
   function handleDeleteTask() {
-    onDeleteTask(content);
+    onDeleteTask(contentTask.id);
+  }
+
+  function handleTaskCompleted() {
+    onTaskCompleted(contentTask.id);
   }
 
   return (
-    <div>
+    <section>
       <div className={styles.container}>
-        <div className={styles.ListTasks}>
-          {/* <div className={styles.emptyList} >
-            <ClipboardText size={56} />
-            <strong>Você ainda não tem tarefas cadastradas</strong>
-            <p>Crie tarefas e organize seus itens a fazer</p>
-          </div> */}
-
+        <div className={styles.listTasks}>
           <div className={styles.task}>
-            <Circle size={24} className={styles.circle} />
-            <p>{content}</p>
+            <button
+              onClick={handleTaskCompleted}
+              className={styles.checkContainer}
+            >
+              {contentTask.isCompleted ? <Check /> : <div />}
+            </button>
+
+            <p className={contentTask.isCompleted ? styles.textCompleted : ""}>
+              {contentTask.name}
+            </p>
             <button onClick={handleDeleteTask} title="Deletar tarefa">
               <Trash size={24} />
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
